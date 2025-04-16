@@ -41,7 +41,7 @@ ZabbixSender.prototype.addItem = function(host, key, value = null, timestamp = 0
         }
         this.items[length - 1].clock = ts | 0;
 
-        if (this.with_ns || ns > 0) {
+        if (this.with_ns) {
             this.items[length - 1].ns = (ts % 1) * 1000 * 1000000 | 0;
         }
     }
