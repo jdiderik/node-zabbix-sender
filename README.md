@@ -14,6 +14,9 @@ var Sender = new ZabbixSender({host: 'zabbix.example.com'});
 Sender.addItem('webserver', 'httpd.running', 0);
 Sender.addItem('dbserver', 'mysql.ping', 1);
 
+// Add items to request WITH timestamp (in seconds or milliseconds)
+Sender.addItem('dbserver', 'mysql.ping', 1, 1744783289); // requires hostname to be included (4 parameters)
+
 // Add item with default host
 Sender.addItem('httpd.logs.size', 1024);
 
@@ -69,10 +72,11 @@ here are the options defaults:
 
 ### Instance methods
 
-**`addItem([host], key, value)`**
+**`addItem([host], key, value, [timestamp])`**
 
 Adds an item to the request payload. The item data won't be sent until the `send` method invoked.
 The `return` value is self instance, so chaining can be used.
+When setting a custom `timestamp`, supplying the `host` value is mandatory
 
 **`clearItems()`**
 

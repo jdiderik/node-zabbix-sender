@@ -4,6 +4,7 @@ var Sender = new ZabbixSender({host: 'zabbix.example.com'});
 // Add items to request
 Sender.addItem('webserver', 'httpd.running', 0);
 Sender.addItem('dbserver', 'mysql.ping', 1);
+Sender.addItem('dbserver', 'mysql.ping', 1, 1744783113); // with timestamp
 
 // Add item with default host
 Sender.addItem('httpd.logs.size', 1024);
